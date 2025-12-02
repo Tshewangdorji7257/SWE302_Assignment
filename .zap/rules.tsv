@@ -1,0 +1,155 @@
+# ZAP Scanning Rules
+# Format: rule-id	WARN|FAIL|IGNORE|INFO
+# 
+# Common vulnerability IDs:
+# 10010 - Cookie No HttpOnly Flag
+# 10011 - Cookie Without Secure Flag
+# 10015 - Re-examine Cache-control Directives
+# 10016 - Web Browser XSS Protection Not Enabled
+# 10017 - Cross-Domain JavaScript Source File Inclusion
+# 10019 - Content-Type Header Missing
+# 10020 - X-Frame-Options Header Not Set
+# 10021 - X-Content-Type-Options Header Missing
+# 10023 - Information Disclosure - Debug Error Messages
+# 10027 - Information Disclosure - Suspicious Comments
+# 10032 - Viewstate Scanner
+# 10033 - Directory Browsing
+# 10034 - Heartbleed OpenSSL Vulnerability
+# 10035 - Strict-Transport-Security Header Not Set
+# 10036 - HTTP Server Response Header
+# 10037 - Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+# 10040 - Secure Pages Include Mixed Content
+# 10041 - HTTP to HTTPS Insecure Transition in Form Post
+# 10042 - HTTPS to HTTP Insecure Transition in Form Post
+# 10043 - User Controllable JavaScript Event (XSS)
+# 10044 - Big Redirect Detected (Potential Sensitive Information Leak)
+# 10045 - Source Code Disclosure - /WEB-INF folder
+# 10049 - Content-Type Header Missing
+# 10050 - Retrieved from Cache
+# 10051 - Relative Path Confusion
+# 10052 - X-ChromeLogger-Data (XCOLD) Header Information Leak
+# 10053 - Apache Range Header DoS (CVE-2011-3192)
+# 10054 - Cookie Without SameSite Attribute
+# 10055 - CSP Scanner
+# 10056 - X-Debug-Token Information Leak
+# 10057 - Username Hash Found
+# 10061 - X-AspNet-Version Response Header Scanner
+# 10062 - PII Disclosure
+# 10063 - Permissions Policy Header Not Set
+# 10096 - Timestamp Disclosure
+# 10097 - Hash Disclosure
+# 10098 - Cross-Domain Misconfiguration
+# 10099 - Source Code Disclosure
+# 10103 - Clickjacking
+# 10104 - User Agent Fuzzer
+# 10105 - Weak Authentication Method
+# 20012 - Anti-CSRF Tokens Scanner
+# 20014 - HTTP Parameter Pollution
+# 20015 - Heartbleed OpenSSL Vulnerability
+# 20016 - Cross-Domain Misconfiguration
+# 20017 - Source Code Disclosure - CVE-2012-1823
+# 20018 - Remote Code Execution - CVE-2012-1823
+# 20019 - External Redirect
+# 30001 - Buffer Overflow
+# 30002 - Format String Error
+# 30003 - Integer Overflow Error
+# 40003 - CRLF Injection
+# 40008 - Parameter Tampering
+# 40009 - Server Side Include
+# 40012 - Cross Site Scripting (Reflected)
+# 40013 - Session Fixation
+# 40014 - Cross Site Scripting (Persistent)
+# 40016 - Cross Site Scripting (Persistent) - Prime
+# 40017 - Cross Site Scripting (Persistent) - Spider
+# 40018 - SQL Injection
+# 40019 - SQL Injection - MySQL
+# 40020 - SQL Injection - Hypersonic SQL
+# 40021 - SQL Injection - Oracle
+# 40022 - SQL Injection - PostgreSQL
+# 40023 - Possible Username Enumeration
+# 40024 - SQL Injection - SQLite
+# 40025 - Proxy Disclosure
+# 40026 - Cross Site Scripting (DOM Based)
+# 40027 - SQL Injection - MsSQL
+# 40028 - ELMAH Information Leak
+# 40029 - Trace.axd Information Leak
+# 40032 - .htaccess Information Leak
+# 40034 - .env Information Leak
+# 40035 - Hidden File Finder
+# 40038 - Git Information Disclosure
+# 40039 - Web Cache Deception
+# 40040 - CORS Header Scanner
+# 40041 - FileUpload Scanner
+# 40042 - Spring Actuator Information Leak
+# 40043 - Log4Shell (CVE-2021-44228)
+# 40044 - Exponential Entity Expansion (Billion Laughs Attack)
+# 40045 - Spring4Shell (CVE-2022-22965)
+# 90001 - Insecure JSF ViewState
+# 90011 - Charset Mismatch
+# 90017 - XSLT Injection
+# 90019 - Server Side Code Injection
+# 90020 - Remote OS Command Injection
+# 90021 - XPath Injection
+# 90022 - Application Error Disclosure
+# 90023 - XML External Entity Attack
+# 90024 - Generic Padding Oracle
+# 90025 - Expression Language Injection
+# 90026 - SOAP Action Spoofing
+# 90027 - Cookie Slack Detector
+# 90028 - Insecure HTTP Method
+# 90029 - SOAP XML Injection
+# 90030 - WSDL File Passive Scanner
+# 90033 - Loosely Scoped Cookie
+# 90034 - Cloud Metadata Potentially Exposed
+# 100000 - Script Active Scan Rules
+
+# Security Headers (WARN - should be fixed but not critical)
+10020	WARN	X-Frame-Options Header Not Set
+10021	WARN	X-Content-Type-Options Header Missing
+10035	WARN	Strict-Transport-Security Header Not Set
+10055	WARN	CSP Scanner
+10063	WARN	Permissions Policy Header Not Set
+
+# Cookie Security (WARN - should be fixed)
+10010	WARN	Cookie No HttpOnly Flag
+10011	WARN	Cookie Without Secure Flag
+10054	WARN	Cookie Without SameSite Attribute
+
+# Critical Vulnerabilities (FAIL - must be fixed)
+40012	FAIL	Cross Site Scripting (Reflected)
+40014	FAIL	Cross Site Scripting (Persistent)
+40018	FAIL	SQL Injection
+40019	FAIL	SQL Injection - MySQL
+40022	FAIL	SQL Injection - PostgreSQL
+40024	FAIL	SQL Injection - SQLite
+90020	FAIL	Remote OS Command Injection
+90023	FAIL	XML External Entity Attack
+40043	FAIL	Log4Shell
+40045	FAIL	Spring4Shell
+
+# High Risk (FAIL)
+20012	FAIL	Anti-CSRF Tokens Scanner
+40008	FAIL	Parameter Tampering
+40013	FAIL	Session Fixation
+90019	FAIL	Server Side Code Injection
+90025	FAIL	Expression Language Injection
+40040	FAIL	CORS Header Scanner
+
+# Medium Risk (WARN)
+10023	WARN	Information Disclosure - Debug Error Messages
+10027	WARN	Information Disclosure - Suspicious Comments
+10036	WARN	HTTP Server Response Header
+10037	WARN	Server Leaks Information via X-Powered-By
+40023	WARN	Possible Username Enumeration
+90022	WARN	Application Error Disclosure
+90034	WARN	Cloud Metadata Potentially Exposed
+
+# Low Risk / Informational (INFO)
+10015	INFO	Re-examine Cache-control Directives
+10096	INFO	Timestamp Disclosure
+10097	INFO	Hash Disclosure
+10050	INFO	Retrieved from Cache
+90011	INFO	Charset Mismatch
+
+# Ignore (false positives or expected behavior)
+10104	IGNORE	User Agent Fuzzer
