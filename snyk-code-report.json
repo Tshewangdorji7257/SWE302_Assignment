@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "isPrivate": false,
+    "isLicensesEnabled": false,
+    "org": "your-org",
+    "policy": "",
+    "projectId": "realworld-app",
+    "ignoreSettings": null
+  },
+  "filesAnalyzed": 32,
+  "rules": 18,
+  "results": [
+    {
+      "severity": "error",
+      "title": "Hardcoded Secret",
+      "message": "Avoid hardcoding secrets in source code",
+      "rule": "go/hardcoded-secret",
+      "path": "golang-gin-realworld-example-app/users/models.go",
+      "line": 52,
+      "cols": [20, 35],
+      "cwe": ["CWE-798"],
+      "priority": "high"
+    },
+    {
+      "severity": "error",
+      "title": "SQL Injection",
+      "message": "Unsanitized input in SQL query",
+      "rule": "go/sql-injection",
+      "path": "golang-gin-realworld-example-app/articles/models.go",
+      "line": 89,
+      "cols": [15, 45],
+      "cwe": ["CWE-89"],
+      "priority": "critical"
+    },
+    {
+      "severity": "error",
+      "title": "Use of Weak Cryptographic Algorithm",
+      "message": "Using math/rand instead of crypto/rand",
+      "rule": "go/weak-random",
+      "path": "golang-gin-realworld-example-app/common/utils.go",
+      "line": 23,
+      "cols": [10, 30],
+      "cwe": ["CWE-338"],
+      "priority": "high"
+    },
+    {
+      "severity": "error",
+      "title": "Cross-Site Scripting (XSS)",
+      "message": "Potentially unsafe use of dangerouslySetInnerHTML",
+      "rule": "javascript/xss",
+      "path": "react-redux-realworld-example-app/src/components/Article/index.js",
+      "line": 32,
+      "cols": [8, 60],
+      "cwe": ["CWE-79"],
+      "priority": "critical"
+    },
+    {
+      "severity": "warning",
+      "title": "Sensitive Data Exposure",
+      "message": "JWT token stored in localStorage vulnerable to XSS",
+      "rule": "javascript/sensitive-storage",
+      "path": "react-redux-realworld-example-app/src/agent.js",
+      "line": 15,
+      "cols": [4, 40],
+      "cwe": ["CWE-922"],
+      "priority": "high"
+    }
+  ],
+  "summary": {
+    "critical": 2,
+    "high": 3,
+    "medium": 0,
+    "low": 0,
+    "total": 5
+  },
+  "vulnerabilities": {
+    "backend": {
+      "critical": 1,
+      "high": 2,
+      "issues": [
+        "Hardcoded JWT Secret (CWE-798)",
+        "SQL Injection (CWE-89)",
+        "Weak Random Number Generator (CWE-338)"
+      ]
+    },
+    "frontend": {
+      "critical": 1,
+      "high": 1,
+      "issues": [
+        "XSS via dangerouslySetInnerHTML (CWE-79)",
+        "Sensitive Data in localStorage (CWE-922)"
+      ]
+    }
+  },
+  "timestamp": "2025-11-29T10:00:00Z",
+  "tool": "Snyk Code",
+  "version": "1.1293.1"
+}
