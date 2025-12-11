@@ -29,6 +29,6 @@
     "eject": "react-scripts eject"
   },
   "optionalDependencies": {
-    "fsevents": "^2.3.2"
+    "fsevents": "^2.3.3"
   }
 }
